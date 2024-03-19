@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         entryDiv.classList.add('entry');
         entryDiv.innerHTML = `
             <h3>${date}</h3>
-            <div class="entry-content">${marked(entry)}</div>
+            <div class="entry-content">${marked.parse(entry)}</div>
             <div class="actions">
                 <button class="edit-btn">編集</button>
                 <button class="delete-btn">削除</button>
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function editEntry(entryDiv, date, entry) {
         const newEntry = prompt('エントリーを編集 (マークダウン記法が使えます):', entry);
         if (newEntry !== null) {
-            entryDiv.querySelector('.entry-content').innerHTML = marked(newEntry);
+            entryDiv.querySelector('.entry-content').innerHTML = marked.parse(newEntry);
         }
     }
 

@@ -22,3 +22,24 @@ ol {
 li {
     margin-bottom: 10px;
 }
+
+.input-container {
+    margin-top: 20px;
+}
+
+#new-priority {
+    padding: 5px;
+    width: 70%;
+}
+
+#add-priority {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#add-priority:hover {
+    background-color: #0056b3;
+}

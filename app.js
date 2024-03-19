@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const entriesDiv = document.getElementById('entries');
-
-    // アクセスカウンターの初期化と表示
-    initAccessCounter();
+    const countSpan = document.getElementById('count');
 
     // テスト記事の表示
     createTestEntries();
+
+    // アクセスカウンターの初期化と表示
+    initAccessCounter();
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         entryDiv.classList.add('entry');
         entryDiv.innerHTML = `
             <h3>${date}</h3>
-            <p>${entry}</p>
+            <div class="entry-content">${marked(entry)}</div>
             <div class="actions">
                 <button class="edit-btn">編集</button>
                 <button class="delete-btn">削除</button>
@@ -48,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 記事の編集
     function editEntry(entryDiv, date, entry) {
-        const newEntry = prompt('エントリーを編集:', entry);
+        const newEntry = prompt('エントリーを編集 (マークダウン記法が使えます):', entry);
         if (newEntry !== null) {
-            entryDiv.querySelector('p').textContent = newEntry;
+            entryDiv.querySelector('.entry-content').innerHTML = marked(newEntry);
         }
     }
 
@@ -64,9 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // テスト記事の作成
     function createTestEntries() {
         const testEntries = [
-            { date: '2023-03-10', entry: 'サイバーパンクな一日だった。ネオンに彩られた街を散策し、ハッカーたちと情報を交換した。' },
-            { date: '2023-03-11', entry: '新しいサイバーウェアを手に入れた。能力が大幅に向上するはずだ。明日からの任務が楽しみだ。' },
-            { date: '2023-03-12', entry: 'サイバー空間での出会い。彼女は強力なAIプログラムを開発していると言っていた。協力できそうだ。' },
+            { date: '2023-03-10', entry: 'サイバーパンクな一日だった。**ネオンに彩られた街**を散策し、`ハッカー`たちと情報を交換した。' },
+            { date: '2023-03-11', entry: '新しい*サイバーウェア*を手に入れた。能力が大幅に向上するはずだ。明日からの~~任務~~が楽しみだ。' },
+            { date: '2023-03-12', entry: 'サイバー空間での出会い。彼女は強力な[AIプログラム](https://www.example.com)を開発していると言っていた。協力できそうだ。' },
         ];
 
         testEntries.forEach(function (testEntry) {
@@ -74,20 +75,19 @@ document.addEventListener('DOMContentLoaded', function () {
             entriesDiv.appendChild(entryDiv);
         });
     }
-});
 
-// アクセスカウンターの初期化と表示
-function initAccessCounter() {
-    const countSpan = document.getElementById('count');
-    let count = localStorage.getItem('accessCount');
+    // アクセスカウンターの初期化と表示
+    function initAccessCounter() {
+        let count = localStorage.getItem('accessCount');
 
-    if (count === null) {
-        count = 0;
-    } else {
-        count = parseInt(count, 10);
+        if (count === null) {
+            count = 0;
+        } else {
+            count = parseInt(count, 10);
+        }
+
+        count++;
+        localStorage.setItem('accessCount', count);
+        countSpan.textContent = count;
     }
-
-    count++;
-    localStorage.setItem('accessCount', count);
-    countSpan.textContent = count;
-}
+});

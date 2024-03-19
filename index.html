@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priorities Web App</title>
+    <title>私の日記</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Priorities:</h1>
-        <ol>
-            <li>Jan: More data &rarr; Upload sync</li>
-            <li>Feb: Product &rarr; Rec. friends</li>
-            <li>Mar: Virality &rarr; Referrals!</li>
-        </ol>
-        <div class="input-container">
-            <input type="text" id="new-priority" placeholder="Enter a new priority">
-            <button id="add-priority">Add Priority</button>
-        </div>
+        <div id="access-count">アクセス数: <span id="count"></span></div>
+        <h1>私の日記</h1>
+        <form>
+            <label for="date">日付：</label>
+            <input type="date" id="date" required>
+            <label for="entry">エントリー：</label>
+            <textarea id="entry" required></textarea>
+            <button type="submit">保存</button>
+        </form>
+        <div id="entries"></div>
     </div>
     <script src="app.js"></script>
 </body>

@@ -1,45 +1,98 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0c0c0c;
+    color: #00ff00;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    background-color: #000;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    border: 2px solid #00ff00;
 }
 
 h1 {
-    color: #333;
+    text-align: center;
+    color: #ff00ff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
 }
 
-ol {
-    padding-left: 20px;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-li {
+label, input, textarea {
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    padding: 10px;
+    background-color: #000;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #ff00ff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #cc00cc;
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
+}
+
+#entries {
+    margin-top: 30px;
+}
+
+.entry {
+    background-color: #000;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #00ff00;
+    position: relative;
+}
+
+.entry h3 {
+    color: #ff00ff;
     margin-bottom: 10px;
 }
 
-.input-container {
-    margin-top: 20px;
+.entry p {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-#new-priority {
-    padding: 5px;
-    width: 70%;
+.entry .actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-#add-priority {
-    padding: 5px 10px;
-    background-color: #007BFF;
-    color: white;
+.entry .actions button {
+    background-color: transparent;
+    color: #ff00ff;
     border: none;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
 }
 
-#add-priority:hover {
-    background-color: #0056b3;
+#access-count {
+    text-align: right;
+    margin-bottom: 20px;
+    color: #ff00ff;
 }
